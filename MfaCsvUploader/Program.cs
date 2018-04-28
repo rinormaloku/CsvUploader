@@ -19,6 +19,12 @@ namespace MfaCsvUploader
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((ctx, cfg) =>
+                {
+                    cfg.SetBasePath(Directory.GetCurrentDirectory())
+                        .AddJsonFile("appsettings.json", true)
+                        .AddEnvironmentVariables();
+                })
                 .UseStartup<Startup>()
                 .Build();
     }

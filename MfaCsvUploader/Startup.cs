@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using MfaCsvUploader.Data;
+using MfaCsvUploader.Extensions;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,6 +31,11 @@ namespace MfaCsvUploader
             .AddAzureAd(options => Configuration.Bind("AzureAd", options))
             .AddCookie();
 
+            services.AddDbContext<CsvContext>(cfg =>
+            {
+                cfg.UseSqlServer(Configuration.GetConnectionString("CsvDB"));
+            });
+            
             services.AddMvc();
         }
 
