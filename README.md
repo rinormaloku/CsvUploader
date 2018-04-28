@@ -21,9 +21,9 @@ To start the project we need to replace the placeholder values in the file appse
 
 ## Info
 
-This project enables file upload and Azure Active Directory Authentication. If you didn't turn MFA for the specified user then he can login without Multi-Factor Authentication.
+This project enables file upload and Azure Active Directory Authentication. If you didn't enable MFA for the specified user then he can login without Multi-Factor Authentication.
 
-## Enable Multi-Factor Authentivation
+## Enable Multi-Factor Authentication
 1. Navigate to Azure Active Directory > Providers, add a new provider.
 2. Go back to Azure Active Directory, and navigate to All Users > Multi-Factor Authentication.
 3. Select the users you want to turn MFA on for.
